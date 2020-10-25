@@ -1,0 +1,52 @@
+[2015Jan05 10:21:05,654][INFO ][][configurarLogger ?:?][APLICACION: WSCLS - VERSION: 1.0]
+[2015Jan05 10:21:05,676][INFO ][][configurarLogger ?:?][DESCRIPCION: Servicios de Integracion - Lista Seguridad]
+[2015Jan05 10:21:05,681][INFO ][1420469465678][procesa ConsultaListaSeguridad.java:79][XML recibido: ]
+[2015Jan05 10:21:05,839][ERROR][1420469465678][procesa ConsultaListaSeguridad.java:100][excep_external_resource_call_cedulados]
+weblogic.webservice.tools.wsdlp.WSDLParseException: Failed to retrieve WSDL from http://cfglobd05:8501/ConsultaListaSeguridad/ConsultaListaSeguridadWS?WSDL. Please check the URL and make sure that it is a valid XML file [java.net.SocketException: Socket Closed]
+	at weblogic.webservice.tools.wsdlp.DefinitionFactory.createDefinition(DefinitionFactory.java:166)
+	at weblogic.webservice.tools.wsdlp.WSDLParser.<init>(WSDLParser.java:76)
+	at weblogic.webservice.WebServiceFactory.createFromWSDL(WebServiceFactory.java:108)
+	at weblogic.webservice.core.rpc.ServiceImpl.<init>(ServiceImpl.java:91)
+	at ve.com.fitsoft.ws.javaclass.ConsultaListaSeguridadWS_Impl.<init>(ConsultaListaSeguridadWS_Impl.java:22)
+	at ve.com.digitel.web.listaSeguridad.servlets.ConsultaListaSeguridad.procesa(ConsultaListaSeguridad.java:85)
+	at ve.com.digitel.web.listaSeguridad.servlets.ConsultaListaSeguridad.doGet(ConsultaListaSeguridad.java:46)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:740)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:853)
+	at weblogic.servlet.internal.ServletStubImpl$ServletInvocationAction.run(ServletStubImpl.java:1072)
+	at weblogic.servlet.internal.ServletStubImpl.invokeServlet(ServletStubImpl.java:465)
+	at weblogic.servlet.internal.ServletStubImpl.invokeServlet(ServletStubImpl.java:348)
+	at weblogic.servlet.internal.WebAppServletContext$ServletInvocationAction.run(WebAppServletContext.java:6981)
+	at weblogic.security.acl.internal.AuthenticatedSubject.doAs(AuthenticatedSubject.java:321)
+	at weblogic.security.service.SecurityManager.runAs(SecurityManager.java:121)
+	at weblogic.servlet.internal.WebAppServletContext.invokeServlet(WebAppServletContext.java:3892)
+	at weblogic.servlet.internal.ServletRequestImpl.execute(ServletRequestImpl.java:2766)
+	at weblogic.kernel.ExecuteThread.execute(ExecuteThread.java:224)
+	at weblogic.kernel.ExecuteThread.run(ExecuteThread.java:183)
+[2015Jan05 10:21:06,747][INFO ][1420469465678][procesa ConsultaListaSeguridad.java:110][Repuesta: <?xml version="1.0" encoding="UTF-8"?>
+<S00036OUT><OperationMessage><Code>S00036-E008</Code><Message>Ocurrio un error al  llamar a Cedulados</Message></OperationMessage></S00036OUT>
+]
+[2015Jan05 11:07:20,508][INFO ][1420472240508][procesa ConsultaListaSeguridad.java:79][XML recibido: ]
+[2015Jan05 11:07:20,521][ERROR][1420472240508][procesa ConsultaListaSeguridad.java:100][excep_external_resource_call_cedulados]
+weblogic.webservice.tools.wsdlp.WSDLParseException: Failed to retrieve WSDL from http://cfglobd05:8501/ConsultaListaSeguridad/ConsultaListaSeguridadWS?WSDL. Please check the URL and make sure that it is a valid XML file [java.net.SocketException: Socket Closed]
+	at weblogic.webservice.tools.wsdlp.DefinitionFactory.createDefinition(DefinitionFactory.java:166)
+	at weblogic.webservice.tools.wsdlp.WSDLParser.<init>(WSDLParser.java:76)
+	at weblogic.webservice.WebServiceFactory.createFromWSDL(WebServiceFactory.java:108)
+	at weblogic.webservice.core.rpc.ServiceImpl.<init>(ServiceImpl.java:91)
+	at ve.com.fitsoft.ws.javaclass.ConsultaListaSeguridadWS_Impl.<init>(ConsultaListaSeguridadWS_Impl.java:22)
+	at ve.com.digitel.web.listaSeguridad.servlets.ConsultaListaSeguridad.procesa(ConsultaListaSeguridad.java:85)
+	at ve.com.digitel.web.listaSeguridad.servlets.ConsultaListaSeguridad.doGet(ConsultaListaSeguridad.java:46)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:740)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:853)
+	at weblogic.servlet.internal.ServletStubImpl$ServletInvocationAction.run(ServletStubImpl.java:1072)
+	at weblogic.servlet.internal.ServletStubImpl.invokeServlet(ServletStubImpl.java:465)
+	at weblogic.servlet.internal.ServletStubImpl.invokeServlet(ServletStubImpl.java:348)
+	at weblogic.servlet.internal.WebAppServletContext$ServletInvocationAction.run(WebAppServletContext.java:6981)
+	at weblogic.security.acl.internal.AuthenticatedSubject.doAs(AuthenticatedSubject.java:321)
+	at weblogic.security.service.SecurityManager.runAs(SecurityManager.java:121)
+	at weblogic.servlet.internal.WebAppServletContext.invokeServlet(WebAppServletContext.java:3892)
+	at weblogic.servlet.internal.ServletRequestImpl.execute(ServletRequestImpl.java:2766)
+	at weblogic.kernel.ExecuteThread.execute(ExecuteThread.java:224)
+	at weblogic.kernel.ExecuteThread.run(ExecuteThread.java:183)
+[2015Jan05 11:07:20,953][INFO ][1420472240508][procesa ConsultaListaSeguridad.java:110][Repuesta: <?xml version="1.0" encoding="UTF-8"?>
+<S00036OUT><OperationMessage><Code>S00036-E008</Code><Message>Ocurrio un error al  llamar a Cedulados</Message></OperationMessage></S00036OUT>
+]

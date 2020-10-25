@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="AuditoriaDTO">
+  <!-- Use type aliases to avoid typing the full classname every time. -->
+  <typeAlias alias="AuditoriaDTO" type="ve.com.digitel.listaSeguridad.to.AuditoriaTO"/>
+  <typeAlias alias ="id" type="ve.com.digitel.listaSeguridad.to.IdentificacionTO"/>
+  <typeAlias alias="Retorno" type="com.domain.dtobd.EnteroRe"/>
+  <!-- Result maps describe the mapping between the columns returned
+       from a query, and the class properties.  A result map isn't
+       necessary if the columns (or aliases) match to the properties 
+       exactly. -->
+ <resultMap id="AuditoriaResult" class="AuditoriaDTO">
+    <result property="fevento" column="F_EVENTO"/>
+    <result property="usrname" column="USR_NAME"/>
+    <result property="tipoId" column="TIPO_CLIENTE"/>
+    <result property="cedula" column="CEDULA"/>
+    <result property="accion" column="ACCION"/>
+     <result property="idModulo" column="ID_MODULO"/>
+    <result property="detalleAccion" column="DETALLE_ACCION"/>
+    <result property="respuesta" column="RESPUESTA"/>
+    <result property="fnacimiento" column="FNACIMIENTO"/>
+    <result property="idObjeto" column="ID_OBJETO"/>
+  </resultMap>
+  
+    <!-- Select with no parameters using the result map for Account class. -->
+   <select id="selectAllAuditorias" resultMap="AuditoriaResult">
+    select * from CLS.CLS_AUDITORIA
+  </select>
+  
+    <!-- A simpler select example without the result map.  Note the 
+       aliases to match the properties of the target result class. -->
+   <select id="selectAuditoriaByF" parameterClass="AuditoriaDTO" resultClass="AuditoriaDTO">
+    select
+      FNACIMIENTO as fnacimiento,
+      F_EVENTO as fevento,
+      USR_NAME as usrname,
+      ID_MODULO as idModulo,
+      TIPO_CLIENTE as tipocliente,
+      CEDULA as cedula,
+      ACCION as accion,
+      DETALLE_ACCION as detalleAccion,
+      RESPUESTA as respuesta
+    from CLS.CLS_AUDITORIA
+    where CEDULA = #cedula# and ID_MODULO=#idModulo# and F_EVENTO=#fevento#
+    group by FNACIMIENTO
+  </select>
+  <!-- AND TIPO_CLIENTE = tipo -->
+  <select id="selectcount" parameterClass="id" resultClass="java.lang.Integer">
+ select count (*) as TOTAL from cls.cls_auditoria where 
+   CEDULA = #numero#
+   AND tipo_cliente = #tipo#
+   AND ID_MODULO='LC' 
+   AND ACCION = 'SELECT'
+   and to_char(F_EVENTO,'yyyy-mm-dd') = to_char(SYSDATE, 'yyyy-mm-dd')
+   AND id_objeto = 1
+   AND respuesta = 'N'
+  </select>
+<insert id ="insertAuditoria"  parameterClass="AuditoriaDTO">
+ insert into CLS.CLS_AUDITORIA 
+ (
+ 
+ F_EVENTO,
+ USR_NAME,
+ ID_MODULO,
+ TIPO_CLIENTE,
+ CEDULA,
+ ACCION,
+ DETALLE_ACCION,
+ RESPUESTA,
+ FNACIMIENTO,
+ ID_OBJETO
+ ) 
+ values
+ (
+ 
+ SYSTIMESTAMP,
+ #usrname#,
+ #idModulo#,
+ #tipoId#,
+ #cedula#,
+ #accion#,
+ #detalleAccion#,
+ #respuesta#,
+ trunc(#fnacimiento#),
+ #idObjeto#
+ ) 
+</insert>
+ 
+</sqlMap>

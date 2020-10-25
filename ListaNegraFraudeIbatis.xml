@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="ListaNegraFraude">
+  <!-- Use type aliases to avoid typing the full classname every time. -->
+  <typeAlias alias="ListaNegraTO" type="ve.com.digitel.listaNegraFraude.to.ListaNegraFraudeTO"/>
+  
+  <typeAlias alias="Identificacion" type="ve.com.digitel.listaNegraFraude.to.IdentificacionTO"/>
+  <!-- Result maps describe the mapping between the columns returned
+       from a query, and the class properties.  A result map isn't
+       necessary if the columns (or aliases) match to the properties 
+       exactly. -->
+ <resultMap id="ListaNegraFraudeResult" class="ListaNegraTO">
+    <result property="cedula" column="CEDULA"/>
+    <result property="tipo" column="TIPO"/>
+    <result property="nombre" column="NOMBRE"/>
+    <result property="apellido" column="APELLIDO"/>
+    <result property="fechaInclusion" column="F_INCLUSION"/>
+     <result property="tipoLinea" column="T_LINEA"/>
+  </resultMap>
+  
+    <!-- Select with no parameters using the result map for Account class. -->
+   <select id="selectListaNegraFraude" parameterClass="Identificacion"  resultMap="ListaNegraFraudeResult">
+    SELECT * FROM CLS.CLS_LN_SEGURIDAD 
+    WHERE
+    	tipo = #tipo# AND cedula=#numero#
+  </select>
+  
+ 
+</sqlMap>

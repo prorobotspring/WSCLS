@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+    
+    <sqlMap namespace="CedulasNuevas">
+    
+    <typeAlias alias ="CedNv" type="ve.com.digitel.listaSeguridad.to.ClienteTO"/>
+    <typeAlias alias ="id" type="ve.com.digitel.listaSeguridad.to.IdentificacionTO"/>
+    <resultMap id="resCedNv" class="CedNv">
+   	  <result property="tipo" column="TIPO"/>
+      <result property="cedula" column="CEDULA"/>
+      <result property="nombre" column="NOMBRE"/>
+      <result property="apellido" column="APELLIDO"/>  	
+      <result property="fnacimiento" column="FNACIMIENTO"/>
+      <result property="fexpedicion" column="FEXPEDICION"/>  
+      <result property="idEstatus" column="ID_ESTATUS"/>
+   	</resultMap>
+    
+    <select id="selectAllCnv" resultMap="resCedNv">
+      select * from CLS.CLS_CEDULAS_NUEVAS
+    </select>
+    <select id="selectByCi" parameterClass="id"  resultClass="CedNv">
+     select TIPO as tipo,
+     CEDULA as cedula,
+     NOMBRE as nombre,
+     APELLIDO as apellido,
+     FNACIMIENTO as fnacimiento,
+     FEXPEDICION as fexpedicion,
+     ID_ESTATUS as idEstatus
+     FROM CLS.CLS_CEDULAS_NUEVAS
+     where CEDULA = #numero# and TIPO = #tipo# 
+    </select>
+    
+    <insert id="insertNvCi" parameterClass="CedNv">
+    
+    	insert into CLS.CLS_CEDULAS_NUEVAS 
+    	(TIPO,
+    	CEDULA,
+    	NOMBRE,
+    	APELLIDO,
+    	FNACIMIENTO,
+    	FEXPEDICION,
+    	ID_ESTATUS
+    	) 
+    	VALUES(
+    	#tipo#,
+    	#cedula#,
+    	#nombre#,
+    	#apellido#,
+    	trunc(#fnacimiento#),
+    	trunc(#fexpedicion#),
+    	#idEstatus#
+    	)
+    
+    </insert>
+    
+   <!--  <parameterMap id="updateParm" class="java.util.Map">
+   	<parameter property="idEstatus"/>
+	<parameter property="cedula"/>
+   </parameterMap>-->
+     <update id="updateEst" parameterClass="java.util.Map">
+          update CLS.CLS_CEDULAS_NUEVAS SET ID_ESTATUS=#idEstatus# 
+          where CEDULA=#identificacion.numero# and TIPO=#identificacion.tipo# 
+    </update>
+    
+    
+    </sqlMap>
+    
